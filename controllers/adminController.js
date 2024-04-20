@@ -15,13 +15,16 @@ exports.addProductGet=(req, res, next) => {
 exports.addProductPost=(req, res, next) => {
   db.execute('insert into products (name,price,des) values(?,?,?)',[req.body.name,req.body.price,req.body.description])
   .then(()=>{
-   shopController.shopGet(req,res,next);
+  res.redirect('/');
 
   })
+}
 
+exports.ProductDelete=(req,res,next)=>{
+  db.execute('delete from products where id = ?',[req.params.id]).then(()=>{
+    res.redirect('/');
+  })
 
-
-   
 }
 
 exports.getProductDetails=(req,res,next)=>{

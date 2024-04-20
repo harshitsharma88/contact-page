@@ -35,12 +35,10 @@
 
             <li class="products"> Name = <%= ele.name %> <br> 
             Price = <%= ele.price %> <br>
-            <a href="/admin/add-product/<%= ele.id %>" class="btn"><button>Details</button></a>
-            <form action=""></form>
-             <br><br>
-
-            </li>
-
+            
+            <form method="get" action="/admin/add-product/<%= ele.id %>" ><button type='submit'>Details</button></form>
+            <form method="delete" action="/admin/delete-product/<%= ele.id %>" ><button type='submit'>Delete</button></form>
+            <br></li>
           <%  })  } %>
 
 

@@ -7,12 +7,19 @@ const router = express.Router();
 const adminController= require('../controllers/adminController');
 
 
-router.get('/add-product/:id',adminController.getProductDetails);
+
 // /admin/add-product => GET
 router.get('/add-product',adminController.addProductGet);
 
 // /admin/add-product => POST
 router.post('/add-product',adminController.addProductPost);
+
+// /admin/add-product => DELETE
+
+
+router.get('/add-product/:id',adminController.getProductDetails);
+
+router.use('/delete-product/:id',adminController.ProductDelete);
 
 
 
