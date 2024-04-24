@@ -17,9 +17,11 @@ router.post('/add-product',adminController.addProductPost);
 // /admin/add-product => DELETE
 
 
-router.get('/add-product/:id',adminController.getProductDetails);
+router.get('/get-product/:id',adminController.getProductDetails);
 
 router.use('/delete-product/:id',adminController.ProductDelete);
+
+
 
 
 

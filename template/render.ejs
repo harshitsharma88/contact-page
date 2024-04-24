@@ -23,7 +23,7 @@
     <ul>
 
     <% if(!Array.isArray(content)){
-        const desc= content.des;
+        const desc= content.desc;
         %>
         <p > <%= desc %> </p>
         <% }
@@ -33,11 +33,15 @@
 
 <% content.forEach((ele)=>{ %>
 
-            <li class="products"> Name = <%= ele.name %> <br> 
+            <li class="products"> Title = <%= ele.title %> <br> 
             Price = <%= ele.price %> <br>
             
-            <form method="get" action="/admin/add-product/<%= ele.id %>" ><button type='submit'>Details</button></form>
-            <form method="delete" action="/admin/delete-product/<%= ele.id %>" ><button type='submit'>Delete</button></form>
+            <form  action="/admin/get-product/<%= ele.id %>" method="GET">
+                <button type='submit'>Details</button>
+            </form>
+            <form  action="/admin/delete-product/<%= ele.id %>" method="DELETE">
+                <button type='submit'>Delete</button>
+            </form>
             <br></li>
           <%  })  } %>
 

@@ -9,8 +9,7 @@ const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const contactRoutes = require('./routes/contact');
 const successtRoutes = require('./routes/success');
-const db=require('./models/database');
-
+const sequelize=require('./util/database');
 
 
 app.set('view engine','ejs');
@@ -26,10 +25,16 @@ app.use('/success',successtRoutes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
-    // res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
+    
     res.status(404).render('render')
 });
 
-app.listen(3000,()=>{
-    console.log("Server Started at PORT 3000");
-});
+
+sequelize.sync().then(result=>{
+    console.log("Connected");
+    app.listen(3000,()=>
+        {console.log("Server Started at PORT 3000");}
+    );
+}
+)
+

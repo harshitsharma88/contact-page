@@ -1,15 +1,20 @@
-const products= [];
+const {DataTypes} = require('sequelize');
 
-module.exports = class Product{
-    constructor(title){
-        this.title=title;
+const sequelize= require('../util/database');
 
-    }
-    save(){
-        products.push(this)
-    }
+const product=sequelize.define('products',{
+    id:{
+        type:DataTypes.INTEGER,
+        allowNull:false,
+        primaryKey:true,
+        autoIncrement:true
+    },
+    title:{
+        type:DataTypes.STRING
+    },
+    price:{type:DataTypes.INTEGER},
+    desc:{type:DataTypes.STRING}
 
-    static fetchAll(){
-        return products;
-    }
-}
+})
+
+module.exports=product;
